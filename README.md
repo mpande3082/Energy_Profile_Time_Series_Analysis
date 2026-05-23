@@ -4,8 +4,8 @@ Analyzing the energy profiles over time for the two countries with the highest e
 
 ## Libraries used
 
-pandas - data extraction, filtering, and manipulation 
-matplotlib - visualization
-seaborn - statistical visualization
-statsmodels - statistical modeling, time series decomposition
-prophet - forecasting
+- pandas - data extraction, filtering, and manipulation 
+- matplotlib - visualization
+- seaborn - statistical visualization
+- statsmodels - statistical modeling, time series decomposition
+- prophet - forecasting
