@@ -27,7 +27,7 @@ countries = ["United States", "China"]
 #dataframe is indexable by row position AND column string
 #first: index by column name
 countries_column = df["country"] #TYPE: SERIES
-boolean_series = countries_column.isin(countries) #TYPE: SERIES
+boolean_series = countries_column.isin(countries) #TYPE: SERIES 
 #isin method loops over every entry in the column and checks against countries list
 
 #print(type(countries_column))
@@ -42,4 +42,41 @@ filtered_df = df[boolean_series]
     #filtering rows: index df using a boolean series df[df["column"].isin(columnlist)]
     #filtering columns: pass in list of column names df[['x', 'y']]
     
-print(filtered_df)
+#print(filtered_df)
+
+#make plot of total energy usage over time
+#make plot of energy share over time
+
+#make plot of renewable share energy over time:
+#further filtering columns to include only share of energy over time for diff. sources
+#how can we ensure there is no overlap?
+renewables_share = filtered_df[["country", "year","renewables_share_energy"]]
+#important: columns excluded because they are sumer: 
+#  fossil(coal,oil,gas),renewable(solar,wind,hydro,other),low carbon(renew,nuclear)
+
+
+#filter by rows
+us_bool = renewables_share["country"].isin(["United States"])
+us_df = renewables_share[us_bool]
+
+china_bool = renewables_share["country"].isin(["China"])
+china_df = renewables_share[china_bool]
+
+plt.plot(us_df["year"], 
+us_df["renewables_share_energy"], 
+label="United States")  
+    
+plt.plot(china_df["year"], 
+china_df["renewables_share_energy"],
+label="China")
+
+plt.legend()
+plt.savefig("renewables_share_energy.png")
+plt.show() #both datasets on one graph
+
+#to embed image: ![title](file_name)
+#IMPORTANT: must save fig before showing
+#showing visualizes and then clears
+
+#graph observations:
+##end of code, moved to interactive pythong jupyter notebook
